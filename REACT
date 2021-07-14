@@ -1,9 +1,5 @@
-local distance = 20 -- The higher it is, the more distance it covers.
+local distance = 10 -- The higher it is, the more distance it covers.
 
-[[-- Don't edit anything down there unless you know what you're doing.
-You can only edit the distance variable. When you execute, don't have
-any tools equipped. Join discord.gg/rj8PXHXmUe
---]]
 
 
 local tool = game.Players.LocalPlayer.Backpack:FindFirstChild("Dribble")
@@ -740,24 +736,13 @@ end)
 
 
 local StarterGui = game:GetService("StarterGui")
-local success, response
 
-if success then
+
 	StarterGui:SetCore("SendNotification", {
 		Title = "Successfully loaded!";
 		Text = "The react script has been loaded successfully!"
 	})
 StarterGui:SetCore("ChatMakeSystemMessage",  { Text = "The react script has successfully been loaded in! Join discord.gg/rj8PXHXmUe for more free quality scripts!", Color = Color3.fromRGB(11, 9, 36), Font = Enum.Font.FredokaOne, FontSize = Enum.FontSize.Size24 } )
-end
-end)
 
 
-if not success then
-	StarterGui:SetCore("SendNotification", {
-		Title = "Unsuccessfully loaded.";
-		Text = "Try unequipping your tools then execute the script again."
-	})
-StarterGui:SetCore("ChatMakeSystemMessage",  { Text = "The react script has been unsuccessfully been loaded in! Try unequipping your tools and executing the script again. If it still doesn't work then join discord.gg/rj8PXHXmUe and dm David De Gea.", Color = Color3.fromRGB(11, 9, 36), Font = Enum.Font.FredokaOne, FontSize = Enum.FontSize.Size24 } )
-end
-end)
 
