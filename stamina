@@ -1,9 +1,6 @@
 loadstring(game:HttpGet'https://raw.githubusercontent.com/supersonicfan111/exploitstuff/master/remoteabuse.lua')()
 
 
-local games = game.Players.LocalPlayer.PlayerGui.Start.Points.InstantStamina.Text
-games.Text = "https://discord.gg/rj8PXHXmUe"
-
 
 local mt = getrawmetatable(game)
 
@@ -31,6 +28,6 @@ while true do
 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 22
 end
 
-local game = game.Players.LocalPlayer.PlayerGui.Start.Points.InstantStamina.Text
+local credit = game.Players.LocalPlayer.PlayerGui.Start.Points.InstantStamina.Text
 
-game.Text = "Infinite Stamina by TalentedFaizan08 (https://discord.gg/wfm5acUKSX)"
+credit.Text = "Infinite Stamina by TalentedFaizan08 (https://discord.gg/wfm5acUKSX)"
