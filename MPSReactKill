@@ -24,9 +24,8 @@ end
 local function reload()
 for i, balls in pairs(game.Workspace:GetDescendants()) do
                             if balls:IsA("BasePart") or balls:IsA("Part") then
-                            local size = Vector3.new(balls.Position.X - 2.5, balls.Position.Y - 2.5, balls.Position.Z - 2.5)
-                            local round = math.round(size)
-                            if round == Vector3.new(0, 0, 0) then
+                            local size = Vector3.new(math.floor(balls.Size.X - 2.5), math.floor(balls.Size.Y - 2.5), math.floor(balls.Size.Z - 2.5))
+                            if size == Vector3.new(0, 0, 0) then
                             if i == 1 then
                                 ball = balls
                             elseif i > 1 then
