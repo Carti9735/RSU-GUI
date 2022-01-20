@@ -6,6 +6,11 @@ local ball = nil
 
 local StarterGui = game:GetService("StarterGui")
 
+local args = {
+    [1] = ball,
+    [2] = Vector3.new(math.huge, math.huge, math.huge),
+    [3] = CFrame.new(Vector3.new(0,0,0))
+}
 
 
 local function reload()
@@ -21,12 +26,9 @@ for i, balls in pairs(game.Workspace:GetDescendants()) do
 end
 end
 
+
+
 game:GetService("RunService").RenderStepped:Connect(function()      
-local args = {
-    [1] = ball,
-    [2] = Vector3.new(math.huge, math.huge, math.huge),
-    [3] = CFrame.new(Vector3.new(0,0,0))
-}
 
 
         for i, v in pairs(game:GetService("ReplicatedStorage"):GetDescendants()) do
@@ -52,7 +54,7 @@ local TextLabel_2 = Instance.new("TextLabel")
 
 
 Avex.Name = "Avex"
-Avex.Parent = game:GetService("CoreGui")
+Avex.Parent = game.CoreGui
 Avex.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Avex.ResetOnSpawn = false
 
