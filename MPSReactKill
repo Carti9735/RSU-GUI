@@ -37,7 +37,7 @@ end
 end
 end)         
 
-            KFRouse.KeyDown:connect(function(activate)
+            mouse.KeyDown:connect(function(activate)
                 activate:lower()
                 if activate == "k" then
                     reload()
