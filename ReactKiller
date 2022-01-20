@@ -52,7 +52,7 @@ local TextLabel_2 = Instance.new("TextLabel")
 
 
 Avex.Name = "Avex"
-Avex.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Avex.Parent = game:GetService("CoreGui")
 Avex.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Avex.ResetOnSpawn = false
 
