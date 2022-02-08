@@ -1,0 +1,132 @@
+_G.SavedSettings = {
+
+LeftCurve = false,
+RightCurve = true,
+EnabledKeyBind = "l",
+CurveSwitchKeyBind = "p",
+SaveSettingsKeyBind = "k"
+
+}
+
+_G.Executed = false
+_G.Enabled = true
+
+local StarterGui = game:GetService("StarterGui")
+
+
+function loadSettings()
+local HttpService = game:GetService("HttpService")
+if (readfile and isfile and isfile("StreetSoccerSettings.txt")) then
+    _G.SettingsToSave = HttpService:JSONDecode(readfile("StreetSoccerSettings.txt"))
+    else 
+        
+        _G.SavedSettings.LeftCurve = false
+        _G.SavedSettings.RightCurve = true
+        _G.SavedSettings.EnabledKeyBind = "l"
+        _G.SavedSettings.CurveSwitchKeyBind = "p"
+        _G.SavedSettings.SaveSettingsKeyBind = "k"
+        
+        json = HttpService:JSONEncode(_G.SavedSettings)
+        writefile("StreetSoccerSettings.txt", json)
+   end
+end
+
+
+
+
+
+
+
+function saveSettings()
+    local json
+    local HttpService = game:GetService("HttpService")
+    if (writefile) then
+        json = HttpService:JSONEncode(_G.SettingsToSave)
+        writefile("StreetSoccerSettings.txt", json)
+        else
+        StarterGui:SetCore("ChatMakeSystemMessage",  { Text = "[AVEXCITAL SCRIPTS] Unfortunately we cannot save the settings. This is likely due to your executor.", Color = Color3.fromRGB(0, 100, 188), Font = Enum.Font.Gotham})
+    end
+end
+
+    
+
+
+loadSettings()
+
+
+            local Player = game.Players.LocalPlayer
+            local Mouse = Player:GetMouse()
+
+                Mouse.KeyDown:Connect(function(activate)
+                activate:lower()
+                if activate == tostring(_G.SavedSettings.EnabledKeyBind) then
+                    _G.Enabled = not _G.Enabled
+                    
+                        wait(0.1)
+                        if _G.Enabled then
+                        StarterGui:SetCore("ChatMakeSystemMessage",  { Text = "[AVEXCITAL SCRIPTS] The script is now enabled!", Color = Color3.fromRGB(11, 9, 36), Font = Enum.Font.Gotham})
+                        elseif not _G.Enabled then
+                        StarterGui:SetCore("ChatMakeSystemMessage",  { Text = "[AVEXCITAL SCRIPTS] The script is now unenabled!", Color = Color3.fromRGB(11, 9, 36), Font = Enum.Font.Gotham})
+                            
+                            end
+        end
+                end)
+        
+        
+                Mouse.KeyDown:Connect(function(activate)
+                activate:lower()
+                if activate == tostring(_G.SavedSettings.CurveSwitchKeyBind) then
+                    _G.LeftCurve = not _G.LeftCurve
+                    _G.RightCurve = not _G.RightCurve
+                    
+                        wait(0.1)
+                        if _G.LeftCurve then
+                        StarterGui:SetCore("ChatMakeSystemMessage",  { Text = "[AVEXCITAL SCRIPTS] The curve is now to the left!", Color = Color3.fromRGB(11, 9, 36), Font = Enum.Font.Gotham})
+                        elseif _G.RightCurve then
+                        StarterGui:SetCore("ChatMakeSystemMessage",  { Text = "[AVEXCITAL SCRIPTS] The script is now to the right!", Color = Color3.fromRGB(11, 9, 36), Font = Enum.Font.Gotham})
+                            
+                            end
+        end
+                end)
+        
+        
+        
+                Mouse.KeyDown:Connect(function(activate)
+                activate:lower()
+                if activate == tostring(_G.SavedSettings.SaveSettingsKeyBind) then
+                   saveSettings()
+        end
+            end)
+
+local args = {
+    [1] = workspace.TPSSystem.TPS,
+    [2] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+}
+
+game:GetService("RunService").RenderStepped:Connect(function()
+if _G.Enabled == false then return end
+
+if _G.SavedSettings.RightCurve then
+
+workspace.FE.Actions.KickC1:FireServer(unpack(args))
+
+elseif _G.SavedSettings.LeftCurve then
+    
+workspace.FE.Actions.KickC2:FireServer(unpack(args))
+end
+end)
+
+
+
+
+if _G.Executed == false then
+    if _G.SavedSettings.RightCurve then
+StarterGui:SetCore("ChatMakeSystemMessage",  { Text = "[AVEXCITAL SCRIPTS] The script has been executed successfully! The keybind for enabling or disabling the script is ".. _G.SavedSettings.EnabledKeyBind.. ". The keybind for switching your curve settings is ".._G.SavedSettings.CurveSwitchKeyBind.. ", and the keybind for saving your settings is ".._G.SavedSettings.SaveSettingsKeyBind.. ". Also, the ball is curving to the right. I almost forgot as well, say :EnabledKey then your desired keybind for enabling or disabling the script and it'll change it. For example :EnabledKeyJ makes the keybind 'J'. The same goes for :CurveSwitchKey (changes your curve keybind) and :SaveSwitchKey (changes your save keybind).", Color = Color3.fromRGB(0, 100, 188), Font = Enum.Font.Gotham})
+
+elseif _G.SavedSettings.LeftCurve then
+
+StarterGui:SetCore("ChatMakeSystemMessage",  { Text = "[AVEXCITAL SCRIPTS] The script has been executed successfully! The keybind for enabling or disabling the script is ".. _G.SavedSettings.EnabledKeyBind.. ". The keybind for switching your curve settings is ".._G.SavedSettings.CurveSwitchKeyBind.. ", and the keybind for saving your settings is ".._G.SavedSettings.SaveSettingsKeyBind.. ". Also, the ball is curving to the left. I almost forgot as well, say :EnabledKey then your desired keybind for enabling or disabling the script and it'll change it. For example :EnabledKeyJ makes the keybind 'J'. The same goes for :CurveSwitchKey (changes your curve keybind) and :SaveSwitchKey (changes your save keybind).", Color = Color3.fromRGB(0, 100, 188), Font = Enum.Font.Gotham})
+
+end
+_G.Executed = true
+end
