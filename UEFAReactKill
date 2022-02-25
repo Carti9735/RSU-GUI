@@ -1,0 +1,47 @@
+if game.PlaceId ~= 4886147037 and game.PlaceId ~= 4890814186 and game.PlaceId ~= 4890806889 and game.PlaceId ~= 4890874964 and game.PlaceId ~= 8125100389 and game.PlaceId ~= 7794911912 then return end
+
+getgenv().AvexLoadingTime = tick()
+
+local SGui = game:GetService("StarterGui")
+local HttpService = game:GetService("HttpService")
+
+getgenv().Time = function(title, text, icon, time) 
+    SGui:SetCore("SendNotification",{
+        Title = title,
+        Text = text,
+        Duration = time
+    })
+end
+
+game:GetService("RunService").RenderStepped:Connect(function()
+for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+    if v.Name == "TPS" then
+local args = {
+    [1] = v
+}
+
+game:GetService("ReplicatedStorage").ChangeValue:FireServer(unpack(args))
+game:GetService("ReplicatedStorage").ChangeOwner:FireServer(unpack(args))
+end
+end
+end)
+
+       local Request = http_request or request or HttpPost or syn.request
+            Request({
+                ["Url"] = "http://localhost:6463/rpc?v=1",
+                ["Method"] = "POST",
+                ["Headers"] = {
+                    ["Content-Type"] = "application/json",
+                    ["Origin"] = "https://discord.com"
+                },
+                ["Body"] = HttpService:JSONEncode({
+                    ["cmd"] = "INVITE_BROWSER",
+                    ["nonce"] = string.lower(HttpService:GenerateGUID(false)),
+                    ["args"] = {
+                        ["code"] = "QwyacVeq3N"
+                    }
+                })
+            })
+
+
+Time("Avexcital", "MPS React loaded in: "..string.format("%.7f", tostring(tick() - AvexLoadingTime)).. "Seconds. Re execute the script if they spawn the ball in again.", "", 3)
